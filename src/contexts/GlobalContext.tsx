@@ -19,10 +19,16 @@ export function InfoProvider({children}: {children:any}) {
         time: "03:00:00"
     }]);
 
+    const [initTask, setInitTask] = useState({
+        task: '',
+        time: '00:00'
+    })
+
     return (
         <GlobalContext.Provider value={{
             valor,
-            tasks, setTasks
+            tasks, setTasks,
+            initTask, setInitTask
         }}>
             {children}
         </GlobalContext.Provider>
