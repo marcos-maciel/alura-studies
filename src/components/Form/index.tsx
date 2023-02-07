@@ -10,7 +10,11 @@ function Form() {
     function createTask(evento: React.FormEvent<HTMLFormElement>) {
         console.log(initTask);
         evento.preventDefault();
-        setTasks(tasks => [...tasks, { ...initTask }])
+        setTasks(tasks => [...tasks, { ...initTask }]);
+        setInitTask({
+            task: '',
+            time: '00:00'
+        })
     }
 
     return (

@@ -7,9 +7,7 @@ function List() {
     const { tasks, setTasks }: any = useContext(GlobalContext);
     return (
         <aside className={style.listatasks}>
-            <h2 onClick={() => {
-                setTasks([...tasks, { task: "Estudar estado", time: "05:00:00" }])
-            }}>Estudo do dia: </h2>
+            <h2>Estudo do dia: </h2>
             <ul>
                 {tasks.map((item, i) => (
                     <Item
