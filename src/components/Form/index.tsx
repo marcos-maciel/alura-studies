@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../../contexts/GlobalContext';
 import Button from '../Button';
-import style from './Form.module.scss'
+import style from './Form.module.scss';
+import { v4 as uuidv4 } from 'uuid';
+import { ITask } from '../../models/task';
 
 function Form() {
     const { setTasks }: any = useContext(GlobalContext);
@@ -10,7 +12,16 @@ function Form() {
     function createTask(evento: React.FormEvent<HTMLFormElement>) {
         console.log(initTask);
         evento.preventDefault();
-        setTasks(tasks => [...tasks, { ...initTask }]);
+        setTasks((tasks: ITask[]) =>
+            [
+                ...tasks,
+                {
+                    ...initTask,
+                    selected: false,
+                    completed: false,
+                    id: uuidv4()
+                }
+            ]);
         setInitTask({
             task: '',
             time: '00:00'

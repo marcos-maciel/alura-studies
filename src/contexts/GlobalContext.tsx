@@ -1,23 +1,23 @@
 import { createContext } from "react";
 import { useState } from "react";
+import { ITask } from "../models/task";
 
 export const GlobalContext = createContext({})
 
 export function InfoProvider({children}: {children:any}) {
-    const valor = "150";
-
-    const [tasks, setTasks] = useState([]);
-
+    const [tasks, setTasks] = useState<ITask[]>([]);
     const [initTask, setInitTask] = useState({
         task: '',
         time: '00:00'
-    })
+    });
+    const [selected, setSelected] = useState<ITask>();
+
 
     return (
         <GlobalContext.Provider value={{
-            valor,
             tasks, setTasks,
-            initTask, setInitTask
+            initTask, setInitTask,
+            selected, setSelected
         }}>
             {children}
         </GlobalContext.Provider>
